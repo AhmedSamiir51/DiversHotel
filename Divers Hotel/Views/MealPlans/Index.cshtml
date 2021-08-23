@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Divers_Hotel.Models.MealPlan>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!-- Hero Section Begin -->
+<div>
+    <!-- Hero Section End -->
+    <div id="wrapper" class="toggled">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"> <a>Dashboard</a> </li>
+                <li> <a asp-action="index" asp-controller="RoomsAdmin">Rooms</a> </li>
+                <li> <a asp-action="index" asp-controller="RoomSeasons">Rooms Season</a> </li>
+                <li> <a asp-action="index" asp-controller="PriceRoomsPerSeasons">Rooms Price</a> </li>
+                <li> <a asp-action="index" asp-controller="MealPlans">Meals Plan</a> </li>
+                <li> <a asp-action="index" asp-controller="MealSeasons">Meals Season</a> </li>
+                <li> <a asp-action="index" asp-controller="PriceMealsPerSeasons">Meal Price</a> </li>
+            </ul>
+        </div> <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="container" style="margin-top: 155px;">
+                    <p>
+                        <a asp-action="Create" class="btn btn-info ml-1" >Create New</a>
+                    </p>
+                    <div class="container-fluid px-4">
+
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Meal Plan 
+                            </div>
+                            <div class="card-body">
+
+
+                                <table class="table" id="datatablesSimple">
+                                    <thead >
+                                        <tr>
+                                            <th>
+                                                @Html.DisplayNameFor(model => model.Name)
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @Html.DisplayFor(modelItem => item.Name)
+                                                </td>
+                                                <td>
+                                                    <a asp-action="Edit" asp-route-id="@item.MealId">Edit</a> |
+                                                    <a asp-action="Details" asp-route-id="@item.MealId">Details</a> |
+                                                    <a asp-action="Delete" asp-route-id="@item.MealId">Delete</a>
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

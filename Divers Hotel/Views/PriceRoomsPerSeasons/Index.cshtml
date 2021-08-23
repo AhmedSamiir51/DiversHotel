@@ -1,0 +1,104 @@
+﻿@model IEnumerable<Divers_Hotel.Models.PriceRoomsPerSeason>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<!-- Hero Section Begin -->
+<div>
+    <!-- Hero Section End -->
+    <div id="wrapper" class="toggled">
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand"> <a>Dashboard</a> </li>
+                <li> <a asp-action="index" asp-controller="RoomsAdmin">Rooms</a> </li>
+                <li> <a asp-action="index" asp-controller="RoomSeasons">Rooms Season</a> </li>
+                <li> <a asp-action="index" asp-controller="PriceRoomsPerSeasons">Rooms Price</a> </li>
+                <li> <a asp-action="index" asp-controller="MealPlans">Meals Plan</a> </li>
+                <li> <a asp-action="index" asp-controller="MealSeasons">Meals Season</a> </li>
+                <li> <a asp-action="index" asp-controller="PriceMealsPerSeasons">Meal Price</a> </li>
+            </ul>
+        </div> <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <div class="container" style="margin-top: 155px;">
+
+                    <p>
+                        <a asp-action="Create" class="btn btn-info ml-1">Create New Price </a>
+                        <a asp-action="CreateRoom" class="btn btn-info ml-1">Create New Room</a>
+                        <a asp-action="CreateSeason" class="btn btn-info ml-1">Create New Season</a>
+                    </p>
+
+                    <div class="container-fluid px-4">
+
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                Price Rooms Per Season  
+                            </div>
+                            <div class="card-body">
+
+
+                                <table class="table" id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                Room Type
+                                            </th>
+                                            <th>
+                                                Season
+                                            </th>
+                                            <th>
+                                                From
+                                            </th>
+                                            <th>
+                                                To
+                                            </th>
+                                            <th>
+                                                Price
+                                            </th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item in Model)
+                                        {
+                                        <tr>
+
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Room.RoomType)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.RoomSeason.NameSeason)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.RoomSeason.From)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.RoomSeason.To)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Price)
+                                            </td>
+                                            <td>
+                                                @Html.ActionLink("Edit", "Edit", new { idRoom = item.IdRoom, idSeason = item.IdSeason }) |
+                                                @Html.ActionLink("Details", "Details", new { idRoom = item.IdRoom, idSeason = item.IdSeason }) |
+                                                @Html.ActionLink("Delete", "Delete", new { idRoom = item.IdRoom, idSeason = item.IdSeason })
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div> 
+    </div> 
+
+</div>

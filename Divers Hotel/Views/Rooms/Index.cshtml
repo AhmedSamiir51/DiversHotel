@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Divers_Hotel.Models.Room>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<!-- Hero Section Begin -->
+<section class="hero-section set-bg" data-setbg="@Url.Content("~/Layout/img/rooms-bg.jpg") ">
+    <div class="hero-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Rooms</h1>
+                </div>
+            </div>
+            <div class="page-nav">
+                <a asp-action="index" asp-controller="User" class="left-nav"><i class="lnr lnr-arrow-left"></i> About </a>
+                <a asp-action="Create" asp-controller="User" class="right-nav">Home <i class="lnr lnr-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Hero Section End -->
+
+<section class="room-section spad">
+    <div class="container">
+        @foreach (var item in Model)
+        {
+        <div class="rooms-page-item">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="room-pic-slider owl-carousel">
+                        <div class="single-room-pic">
+                            <img src="~/Layout/img/room/rooms-1.jpg" alt="">
+                        </div>
+                        <div class="single-room-pic">
+                            <img src="~/Layout/img/room/rooms-2.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="room-text">
+                        <div class="room-title">
+                            <h2> @item.RoomType</h2>
+
+                        </div>
+                        <div class="room-desc">
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mauris, bibendum
+                                eget sapien ac, ultrices rhoncus ipsum.
+                            </p>
+                        </div>
+                        <div class="room-features">
+                            <div class="room-info">
+                                <i class="flaticon-019-television"></i>
+                                <span>Smart TV</span>
+                            </div>
+                            <div class="room-info">
+                                <i class="flaticon-029-wifi"></i>
+                                <span>High Wi-fii</span>
+                            </div>
+                            <div class="room-info">
+                                <i class="flaticon-003-air-conditioner"></i>
+                                <span>AC</span>
+                            </div>
+                            <div class="room-info">
+                                <i class="flaticon-036-parking"></i>
+                                <span>Parking</span>
+                            </div>
+                            <div class="room-info last">
+                                <i class="flaticon-007-swimming-pool"></i>
+                                <span>Pool</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</section>
+<!-- Rooms Section End -->

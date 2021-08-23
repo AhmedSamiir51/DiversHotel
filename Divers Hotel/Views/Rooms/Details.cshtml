@@ -1,0 +1,53 @@
+﻿@model Divers_Hotel.Models.PriceRoomsPerSeason
+
+<section class="hero-section set-bg" data-setbg="@Url.Content("~/Layout/img/rooms-bg.jpg") ">
+    <div class="hero-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1>Rooms</h1>
+                </div>
+            </div>
+            <div class="page-nav">
+                <a asp-action="index" asp-controller="User" class="left-nav"><i class="lnr lnr-arrow-left"></i> About </a>
+                <a asp-action="Create" asp-controller="User" class="right-nav">Home <i class="lnr lnr-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div>
+    <h4>PriceRoomsPerSeason</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RoomSeason.From)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RoomSeason.From)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RoomSeason.To)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RoomSeason.To)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Room.RoomType)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Room.RoomType)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+    </dl>
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Back to List</a>
+</div>

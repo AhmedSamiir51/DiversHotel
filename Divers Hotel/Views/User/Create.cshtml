@@ -1,0 +1,457 @@
+﻿@model Divers_Hotel.Models.ReservationModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="hero-slider">
+    <div class="slider-item">
+        <div class="single-slider-item set-bg" data-setbg="@Url.Content("~/Layout/img/slider-1.jpg")">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1>We hope you’ll enjoy <br />your stay.</h1>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="slider-nav">
+                            <a href="#" class="single-slider-nav">
+                                <img src="~/Layout/img/nav-1.jpg" alt="">
+                                <div class="nav-text active">
+                                    <p>Pool<i class="lnr lnr-arrow-right"></i></p>
+                                </div>
+                            </a>
+                            <a href="#" class="single-slider-nav">
+                                <img src="~/Layout/img/nav-2.jpg" alt="">
+                                <div class="nav-text">
+                                    <p>Sauna<i class="lnr lnr-arrow-right"></i></p>
+                                </div>
+                            </a>
+                            <a href="#" class="single-slider-nav last">
+                                <img src="~/Layout/img/nav-3.jpg" alt="">
+                                <div class="nav-text">
+                                    <p>Restaurant<i class="lnr lnr-arrow-right"></i></p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+   
+</div>
+
+<section class="room-availability spad">
+    
+
+    <div class="container">
+        <div class="room-check">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="room-item">
+                        <div class="room-pic-slider room-pic-item owl-carousel">
+                            <div class="room-pic">
+                                <img src="~/Layout/img/room-slider/room-1.jpg" alt="">
+                            </div>
+                            <div class="room-pic">
+                                <img src="~/Layout/img/room-slider/room-2.jpg" alt="">
+                            </div>
+                            <div class="room-pic">
+                                <img src="~/Layout/img/room-slider/room-3.jpg" alt="">
+                            </div>
+                        </div>
+                        <div class="room-text">
+                            <div class="room-title">
+                                <h2 class="text-danger">@ViewData["Total"] </h2>
+                                <div class="room-price">
+                                    <span>From</span>
+                                </div>
+                            </div>
+                            <div class="room-features">
+                                <div class="room-info">
+                                    <i class="flaticon-019-television"></i>
+                                    <span>Smart TV</span>
+                                </div>
+                                <div class="room-info">
+                                    <i class="flaticon-029-wifi"></i>
+                                    <span>High Wi-fii</span>
+                                </div>
+                                <div class="room-info">
+                                    <i class="flaticon-003-air-conditioner"></i>
+                                    <span>AC</span>
+                                </div>
+                                <div class="room-info">
+                                    <i class="flaticon-036-parking"></i>
+                                    <span>Parking</span>
+                                </div>
+                                <div class="room-info last">
+                                    <i class="flaticon-007-swimming-pool"></i>
+                                    <span>Pool</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="check-form">
+                        <h2>Check Availability</h2>
+                        <form asp-action="Create">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="datepicker">
+                                <div class="date-select">
+                                    <label asp-for="Check_In" class="control-label"></label>
+                                    <input asp-for="Check_In" class="form-control" />
+                                    <span asp-validation-for="Check_In" class="text-danger"></span>
+                                </div>
+                                <div class="date-select to">
+                                    <label asp-for="Check_Out" class="control-label"></label>
+                                    <input asp-for="Check_Out" class="form-control" />
+                                    <span asp-validation-for="Check_Out" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+                            <div class="room-quantity row">
+                                <div class="  col-5">
+                                    <label asp-for="UserName" class="control-label"></label>
+                                    <input asp-for="UserName" class="form-control" />
+                                    <span asp-validation-for="UserName" class="text-danger"></span>
+                                </div>
+
+                                <div class=" col-5 ">
+                                    <label asp-for="Country" class="control-label"></label>
+                                    <input asp-for="Country" class="form-control" />
+                                    <span asp-validation-for="Country" class="text-danger"></span>
+                                </div>
+                                <div class=" col-6">
+                                    <label asp-for="Email" class="control-label"></label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class=" col-4">
+                                    <label asp-for="Adult" class="control-label"></label>
+                                    <input asp-for="Adult" class="form-control" value="0"><br />
+                                    <span asp-validation-for="Adult" class="text-danger"></span>
+                                </div>
+                                <div class=" col-4">
+                                    <label asp-for="Children" class="control-label"></label>
+                                    <input asp-for="Children" class="form-control" value="0"><br />
+                                    <span asp-validation-for="Children" class="text-danger"></span>
+                                </div>
+                            </div>
+
+
+
+
+
+
+                            <div class="room-selector">
+                                <p>Room</p>
+                                <select asp-for="RoomType" asp-items="ViewBag.Room" class="suit-select"> <option>Please select one</option> </select>
+
+                                <span asp-validation-for="RoomType" class="text-danger"></span>
+
+                            </div>
+                            <div class="room-selector">
+                                <p>Meal Plan</p>
+                                <select asp-for="NameMale" asp-items="ViewBag.Meal" class="suit-select"> <option>Please select one</option> </select>
+                                <span asp-validation-for="NameMale" class="text-danger"></span>
+
+
+                            </div>
+                            <button type="submit">CHECK Availability <i class="lnr lnr-arrow-right"></i></button>
+
+                        </form>
+
+                        <div>    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="about-room">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <h2>“Customers may forget what you said  but they will never forget how you made themfeel”.</h2>
+                </div>
+            </div>
+            <div class="about-para">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus libero mauris,
+                            bibendum eget sapien ac, ultrices rhoncus ipsum. Donec nec sapien in urna fermentum
+                            ornare. Morbi vel ultrices leo. Sed eu turpis eu arcu vehicula fringilla ut vitae
+                            orci. Suspendisse maximus malesuada
+                        </p>
+                    </div>
+                    <div class="col-lg-6">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi at vulputate est.
+                            Donec tempor felis at nibh eleifend malesuada. Nullam suscipit lobortis aliquam.
+                            Phasellus lobortis ante lorem, vitae scelerisque lacus tempus sed. Phasellus rutrum
+                            magna
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+
+
+<div class="facilities-section spad">
+    <div class="container">
+        <div class="facilities-content">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <h1>Facilities</h1>
+                    </div>
+                </div>
+                <div class="col-lg-6 p-0">
+                    <div class="facilities-img set-bg" data-setbg="@Url.Content("~/Layout/img/facilities-1.jpg")"></div>
+                </div>
+                <div class="col-lg-6 p-0 ">
+                    <div class="facilities-text-warp">
+                        <div class="facilities-text">
+                            <h2>Wellness Center</h2>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipis-cing elit. Mauris tincidunt consectetur
+                                turpis, eget consequat.
+                            </p>
+                            <a href="#" class="primary-btn fac-btn">Visit Center <i class="lnr lnr-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 p-0 order-lg-1 order-2">
+                    <div class="facilities-text-warp">
+                        <div class="facilities-text">
+                            <h2>Wellness Center</h2>
+                            <p>
+                                Lorem ipsum dolor sit amet, consectetur adipis-cing elit. Mauris tincidunt consectetur
+                                turpis, eget consequat.
+                            </p>
+                            <a href="#" class="primary-btn fac-btn">Visit Center <i class="lnr lnr-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 p-0 order-lg-2 order-1">
+                    <div class="facilities-img set-bg" data-setbg="@Url.Content("~/Layout/img/facilities-2.jpg") "></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="testimonial-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <h1>Guestbook</h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="testimonial-item">
+                    <div class="tab-content">
+                        <div class="tab-pane fade-in active" id="testimonial-1" role="tabpanel">
+                            <div class="single-testimonial-item">
+                                <span class="test-date">02/02/2019</span>
+                                <div class="test-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <h4>Loved It</h4>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus libero mauris,
+                                    bibendum eget sapien ac, ultrices rhoncus ipsum. Donec nec sapien in urna
+                                    fermentum ornare.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="testimonial-2" role="tabpanel">
+                            <div class="single-testimonial-item">
+                                <span class="test-date">02/02/2019</span>
+                                <div class="test-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <h4>Loved It2</h4>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus libero mauris,
+                                    bibendum eget sapien ac, ultrices rhoncus ipsum. Donec nec sapien in urna
+                                    fermentum ornare.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="testimonial-3" role="tabpanel">
+                            <div class="single-testimonial-item">
+                                <span class="test-date">02/02/2019</span>
+                                <div class="test-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <h4>Loved It3</h4>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiselit. Vivamus libero mauris,
+                                    bibendum eget sapien ac, ultrices rhoncus ipsum. Donec nec sapien in urna
+                                    fermentum ornare.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="testimonial-author-item">
+                    <ul class="nav" role="tablist">
+                        <li>
+                            <a data-toggle="tab" href="#testimonial-1" role="tab" class="show active">
+                                <div class="author-pic">
+                                    <img src="~/Layout/img/testimonial/author-1.jpg" alt="">
+                                </div>
+                                <div class="author-text">
+                                    <h5>John Doe <span>Berlin</span></h5>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#testimonial-2" role="tab">
+                                <div class="author-pic">
+                                    <img src="~/Layout/img/testimonial/author-2.jpg" alt="">
+                                </div>
+                                <div class="author-text">
+                                    <h5>John Doe <span>Berlin</span></h5>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <a data-toggle="tab" href="#testimonial-3" role="tab">
+                                <div class="author-pic">
+                                    <img src="~/Layout/img/testimonial/author-3.jpg" alt="">
+                                </div>
+                                <div class="author-text">
+                                    <h5>John Doe <span>Berlin</span></h5>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="follow-instagram">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h2>Follow us on Instagram </h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<div class="footer-room-pic">
+    <div class="container-fluid">
+        <div class="row">
+            <img src="~/Layout/img/room-footer-pic/room-1.jpg" alt="">
+            <img src="~/Layout/img/room-footer-pic/room-2.jpg" alt="">
+            <img src="~/Layout/img/room-footer-pic/room-3.jpg" alt="">
+            <img src="~/Layout/img/room-footer-pic/room-4.jpg" alt="">
+        </div>
+    </div>
+</div>
+
+<!-- Footer Section Begin -->
+<footer class="footer-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="footer-logo">
+                    <a href="#"><img src="~/Layout/img/logo.png" alt=""></a>
+                </div>
+            </div>
+        </div>
+        <div class="row pb-50">
+            <div class="col-lg-3 col-sm-6">
+                <div class="single-footer-widget">
+                    <h5>Location</h5>
+                    <div class="widget-text">
+                        <i class="lnr lnr-map-marker"></i>
+                        <p>1525 Boring Lane, <br />Los Angeles, CA</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single-footer-widget">
+                    <h5>Reception</h5>
+                    <div class="widget-text">
+                        <i class="lnr lnr-phone-handset"></i>
+                        <p>+1 (603)535-4592</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single-footer-widget">
+                    <h5>Shuttle Service</h5>
+                    <div class="widget-text">
+                        <i class="lnr lnr-phone-handset"></i>
+                        <p>+1 (603)535-4592</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6">
+                <div class="single-footer-widget">
+                    <h5>Restaurant</h5>
+                    <div class="widget-text">
+                        <i class="lnr lnr-phone-handset"></i>
+                        <p>+1 (603)535-4592</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-area">
+        <div class="container">
+            <div class="copyright-text">
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                Copyright &copy;
+                <script>document.write(new Date().getFullYear());</script> All rights reserved Me
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </div>
+            <div class="privacy-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Photo Requests</a>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Footer Section End -->
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}
+

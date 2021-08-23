@@ -1,0 +1,79 @@
+﻿@model Divers_Hotel.Models.User
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container " style="width:100%">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4 col-xl-4">
+            <div class="card  shadow-lg p-3 mb-5 bg-white rounded "  style="margin-top: 202px;">
+                <div class="card-body">
+                    <div class="text-center m-auto">
+                        <h4 class="text-uppercase text-center">CREATE ACCOUNT</h4>
+                    </div>
+                    <form asp-action="Register">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="UserName" class="control-label"></label>
+                            <input asp-for="UserName" placeholder="User Name" class="form-control" />
+                            <span asp-validation-for="UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input asp-for="Email" placeholder="Enter Email" class="form-control" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="Country" class="control-label"></label>
+                            <input asp-for="Country" placeholder="Enter Country" class="form-control" />
+                            <span asp-validation-for="Country" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="Age" class="control-label"></label>
+                            <input asp-for="Age" placeholder="Enter Your Age" class="form-control" />
+                            <span asp-validation-for="Age" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" type="password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label asp-for="ConfirmPassword" class="control-label"></label>
+                            <input asp-for="ConfirmPassword" type="password" class="form-control" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mb-0 d-flex justify-content-between">
+                            <button class="btn btn-dark btn-block" type="submit" name="submit" id="submit">Sign Up </button>
+                        </div>
+                        <script>
+                            $(document).ready(function () {
+                                $("#show_hide_password a").on('click', function (event) {
+                                    event.preventDefault();
+                                    if ($('#show_hide_password input').attr("type") == "text") {
+                                        $('#show_hide_password input').attr('type', 'password');
+                                        $('#show_hide_password i').addClass("fa-eye-slash");
+                                        $('#show_hide_password i').removeClass("fa-eye");
+                                    } else if ($('#show_hide_password input').attr("type") == "password") {
+                                        $('#show_hide_password input').attr('type', 'text');
+                                        $('#show_hide_password i').removeClass("fa-eye-slash");
+                                        $('#show_hide_password i').addClass("fa-eye");
+                                    }
+                                });
+
+                            });
+                        </script>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

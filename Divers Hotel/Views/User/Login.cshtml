@@ -1,0 +1,64 @@
+﻿@model Divers_Hotel.Models.User
+
+@{
+    ViewData["Title"] = "Login";
+    var returnUrl = ViewData["ReturnUrl"] as string;
+}
+<div class="container ">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4 col-xl-4">
+            <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="margin-top: 190px;">
+                <div class="card-body">
+                    <div class="text-center m-auto">
+                        <h4 class="text-uppercase text-center">Login</h4>
+                    </div>
+                    <form action="/User/Login?ReturnUrl=@System.Net.WebUtility.UrlEncode(returnUrl)" method="post">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <input type="hidden" name="csrftoken" value="ea49375f43c7e6a59c77df1e4de562b3f1350124eeb70e5d5124e4ce3b5251c2b4d12e9aaf2a3ddc618c178c8dc4620b">
+                        <div class="form-group mb-3">
+                            <label asp-for="UserName"></label>
+                            <input asp-for="UserName" class="form-control" placeholder="User Name" />
+                        </div>
+                        <div class="form-group mb-3">
+
+                            <label asp-for="Password"></label>
+                            <div class="input-group bg-light" id="show_hide_password">
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Enter Password" required="">
+
+                            </div>
+                        </div>
+                        @if (@ViewBag.massage != null)
+                        {
+                            <div class="alert  alert-danger"> @ViewBag.massage </div>
+
+                        }
+
+                        <div class="form-group mb-0 text-center">
+                            <button class="btn btn-primary btn-block" type="submit" name="submit"> Log In </button>
+                        </div>
+                        <script>
+                            $(document).ready(function () {
+                                $("#show_hide_password a").on('click', function (event) {
+                                    event.preventDefault();
+                                    if ($('#show_hide_password input').attr("type") == "text") {
+                                        $('#show_hide_password input').attr('type', 'password');
+                                        $('#show_hide_password i').addClass("fa-eye-slash");
+                                        $('#show_hide_password i').removeClass("fa-eye");
+                                    } else if ($('#show_hide_password input').attr("type") == "password") {
+                                        $('#show_hide_password input').attr('type', 'text');
+                                        $('#show_hide_password i').removeClass("fa-eye-slash");
+                                        $('#show_hide_password i').addClass("fa-eye");
+                                    }
+                                });
+                            });
+                        </script>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
